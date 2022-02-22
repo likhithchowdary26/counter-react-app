@@ -8,12 +8,12 @@ class Counter extends Component {
 
     handleIncrement = (product) => {
         console.log(product)
-        this.setState({ count:this.state.value+=1 });
+        this.setState({ value:this.state.value+=1 });
     }
 
     handleDecrement = (product) => {
         console.log(product)
-        this.setState({ count:this.state.value-=1 });
+        this.setState({ value:this.state.value-=1 });
 }  
 
     styles={
@@ -25,6 +25,7 @@ class Counter extends Component {
         console.log("props",this.props)
         return (
             <div>
+                <h1>Hello World!!</h1>
                 <h1 style={ this.styles } className={this.getBadges()}>{this.formatCount()}</h1>
                 <button onClick={() => this.handleIncrement(this.state.value)} type ="button" className= "btn btn-success m-2">Increment</button>
                 <button onClick={() => this.handleDecrement(this.state.value)} type ="button" className= "btn btn-dark">Decrement</button>
