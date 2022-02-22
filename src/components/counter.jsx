@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 
 class Counter extends Component {
     state={
-        count: 0,
+        value: this.props.value,
         tags:['tag-1','tag-2','tag-3']
     }
 
     handleIncrement = (product) => {
         console.log(product)
-        this.setState({ count:this.state.count+=1 });
+        this.setState({ count:this.state.value+=1 });
     }
 
     handleDecrement = (product) => {
         console.log(product)
-        this.setState({ count:this.state.count-=1 });
+        this.setState({ count:this.state.value-=1 });
 }  
 
     styles={
@@ -22,13 +22,13 @@ class Counter extends Component {
     }
 
     render() { 
-        
+        console.log("props",this.props)
         return (
             <div>
                 <h1 style={ this.styles } className={this.getBadges()}>{this.formatCount()}</h1>
-                <button onClick={() => this.handleIncrement(this.state.count)} type ="button" className= "btn btn-success m-2">Increment</button>
-                <button onClick={() => this.handleDecrement(this.state.count)} type ="button" className= "btn btn-dark">Decrement</button>
-                <ul>{this.state.tags.map(tag=><li key={tag}>{tag}</li>)}</ul>
+                <button onClick={() => this.handleIncrement(this.state.value)} type ="button" className= "btn btn-success m-2">Increment</button>
+                <button onClick={() => this.handleDecrement(this.state.value)} type ="button" className= "btn btn-dark">Decrement</button>
+                {/* <ul>{this.state.tags.map(tag=><li key={tag}>{tag}</li>)}</ul> */}
             </div>
         );
     };
@@ -36,9 +36,9 @@ class Counter extends Component {
     getBadges() {
         let classes = "badge m-2 badge-";
         //classes += this.state.count === 0 ? "warning" : "primary";
-        if(this.state.count===0)
+        if(this.state.value===0)
             classes += "warning"
-        else if(this.state.count>0)
+        else if(this.state.value>0)
             classes += "primary"
         else
             classes += "danger"
@@ -46,7 +46,7 @@ class Counter extends Component {
     }
 
     formatCount(){
-        return this.state.count===0?"Zero":this.state.count;
+        return this.state.value===0?"Zero":this.state.value;
     }   
     
 }
